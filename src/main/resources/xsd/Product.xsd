@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://syed.imcs.com/Product" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://syed.imcs.com/Product">
+
+    <complexType name="Product">
+    	<sequence>
+    		<element name="productId" type="integer"></element>
+    		<element name="productName" type="string"></element>
+    		<element name="productDescription" type="string"></element>
+    		<element name="productCategory" type="string"></element>
+    		<element name="productCount" type="int"></element>
+    		<element name="productPrice" type="double"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="Order">
+    	<sequence>
+    		<element name="orderId" type="integer"></element>
+    		<element name="customerId" type="integer"></element>
+    		<element name="paymentMethodId" type="integer"></element>
+    		<element name="totalPrice" type="double"></element>
+    		<element name="listOfProducts" type="tns:Product" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="getAllProductsRequest"></complexType>
+
+    <complexType name="getAllProductsResponse">
+    	<sequence>
+    		<element name="allProducts" type="tns:Product" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="getAllProductsRequest" type="tns:getAllProductsRequest"></element>
+
+    <element name="getAllProductsResponse" type="tns:getAllProductsResponse"></element>
+
+    <complexType name="getProductsByNameAndCategoryRequest">
+    	<sequence>
+    		<element name="productName" type="string"></element>
+    		<element name="productCategory" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="getProductsByNameAndCategoryResponse">
+    	<sequence>
+    		<element name="listOfProducts" type="tns:Product" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="getProductsByNameRequest">
+    	<sequence>
+    		<element name="productName" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="getProductsByNameResponse">
+    	<sequence>
+    		<element name="listOfProducts" type="tns:Product" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="createOrderRequest">
+    	<sequence>
+    		<element name="customerId" type="integer"></element>
+    		<element name="paymentMethodId" type="integer"></element>
+    		<element name="totalPrice" type="double"></element>
+    		<element name="listOfProducts" type="tns:Product" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="createOrderResponse">
+    	<sequence>
+    		<element name="order" type="tns:Order"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="getProductsByNameRequest" type="tns:getProductsByNameRequest"></element>
+
+    <element name="getProductsByNameResponse" type="tns:getProductsByNameResponse"></element>
+
+    <element name="getProductsByNameAndCategoryRequest" type="tns:getProductsByNameAndCategoryRequest"></element>
+
+    <element name="getProductsByNameAndCategoryResponse" type="tns:getProductsByNameAndCategoryResponse"></element>
+
+    <element name="createOrderRequest" type="tns:createOrderRequest"></element>
+
+    <element name="createOrderResponse" type="tns:createOrderResponse"></element>
+</schema>
